@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">Lab1</string>
+    <string name="app_name">Lab2</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">I\'m a button</string>
-    ButtonText
+    <string name="header_string">Look at my GUI</string>
+    <string name="click_here">Click here</string>
+    <string name="check_this">Check this out!</string>
+    <string name="switch_text">Switch on/off</string>
+    <string name="type_text">Type here</string>
+    <string name="toast_message">Here is more information</string>
+    <string name="status_on">on</string>
+    <string name="status_off">off</string>
+    <string name="button_undo">Undo</string>
+    <string name="snackbar_message">"The switch is now "</string>
 </resources>

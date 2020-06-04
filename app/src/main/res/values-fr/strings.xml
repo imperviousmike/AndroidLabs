@@ -1,5 +1,15 @@
 <resources>
-    <string name="app_name">Lab1</string>
+    <string name="app_name">Lab2</string>
     <string name="hello_message">Bonjour le monde!</string>
     <string name="ButtonText">Je suis un bouton</string>
+    <string name="header_string">Regardez mon GUI</string>
+    <string name="click_here">Cliquez ici</string>
+    <string name="check_this">Regarde ça!</string>
+    <string name="switch_text">Allumer / éteindre</string>
+    <string name="type_text">Écrivez ici</string>
+    <string name="toast_message">Voici plus d\'informations</string>
+    <string name="status_on">en marche</string>
+    <string name="status_off">éteint</string>
+    <string name="button_undo">Annuler</string>
+    <string name="snackbar_message">"Le commutateur est maintenant   "</string>
 </resources>
