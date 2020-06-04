@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateSnackbarText() {
         snack.setText(getResources().getString(R.string.snackbar_message) + widgetStatus(sw.isChecked()));
-        snack.show();
     }
 
     private void snackbarDisplay() {
@@ -61,11 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Snackbar makeSnackbar() {
-        return Snackbar.make(button, getResources().getString(R.string.snackbar_message) + widgetStatus(sw.isChecked()), Snackbar.LENGTH_INDEFINITE).setAction(getResources().getString(R.string.button_undo), (view -> {
-            sw.toggle();
-            snack = makeSnackbar();
-            snack.show();
-        }));
+        return Snackbar.make(button, getResources().getString(R.string.snackbar_message) + widgetStatus(sw.isChecked()), Snackbar.LENGTH_INDEFINITE).setAction(getResources().getString(R.string.button_undo), (view ->check.toggle()));
     }
 
     private void setLocale() {
