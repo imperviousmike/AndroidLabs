@@ -1,15 +1,13 @@
 <resources>
     <string name="app_name">Lab2</string>
-    <string name="hello_message">Bonjour le monde!</string>
-    <string name="ButtonText">Je suis un bouton</string>
-    <string name="header_string">Regardez mon GUI</string>
-    <string name="click_here">Cliquez ici</string>
-    <string name="check_this">Regarde ça!</string>
-    <string name="switch_text">Allumer / éteindre</string>
-    <string name="type_text">Écrivez ici</string>
-    <string name="toast_message">Voici plus d\'informations</string>
-    <string name="status_on">en marche</string>
-    <string name="status_off">éteint</string>
-    <string name="button_undo">Annuler</string>
-    <string name="snackbar_message">"Le commutateur est maintenant   "</string>
+    <string name="enterEmail">Entrez votre adresse email:</string>
+    <string name="emailHint">Saisissez votre e-mail ici</string>
+    <string name="enterPassword">Tapez votre mot de passe</string>
+    <string name="loginButton">LOGIN</string>
+    <string name="profileLabel">Votre profil</string>
+    <string name="nameLabel">Votre nom</string>
+    <string name="nameHint">Entrez votre nom</string>
+    <string name="emailTag">Votre email</string>
+    <string name="pictureLabel">Ta photo:</string>
+    <string name="pictureText">Cliquez sur le bouton ci-dessus pour prendre une photo</string>
 </resources>
