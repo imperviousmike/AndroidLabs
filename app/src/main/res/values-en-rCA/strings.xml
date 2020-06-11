@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="enterEmail">Enter your email address:</string>
+    <string name="emailHint">Type email here</string>
+    <string name="enterPassword">Type your password:</string>
+    <string name="loginButton">LOGIN</string>
+    <string name="profileLabel">Your profile</string>
+    <string name="nameLabel">Your name:</string>
+    <string name="nameHint">Enter your name</string>
+    <string name="emailTag">Your email:</string>
+    <string name="pictureLabel">Your picture:</string>
+    <string name="pictureText">Click the button above to take a picture</string>
+</resources>

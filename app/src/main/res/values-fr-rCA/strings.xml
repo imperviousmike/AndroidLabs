@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Lab2</string>
+    <string name="enterEmail">Entrez votre adresse email:</string>
+    <string name="emailHint">Saisissez votre e-mail ici</string>
+    <string name="enterPassword">Tapez votre mot de passe</string>
+    <string name="loginButton">LOGIN</string>
+    <string name="profileLabel">Votre profil</string>
+    <string name="nameLabel">Votre nom</string>
+    <string name="nameHint">Entrez votre nom</string>
+    <string name="emailTag">Votre email</string>
+    <string name="pictureLabel">Ta photo:</string>
+    <string name="pictureText">Cliquez sur le bouton ci-dessus pour prendre une photo</string>
+</resources>
