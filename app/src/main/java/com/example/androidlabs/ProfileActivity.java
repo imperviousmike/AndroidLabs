@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -32,6 +34,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         mImageButton = findViewById(R.id.imageUpload);
         mImageButton.setOnClickListener(click -> dispatchTakePictureIntent());
+
+        Button chatButton = findViewById(R.id.chatButton);
+
+        chatButton.setOnClickListener(click ->
+        {
+            Intent goToChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+            startActivity(goToChat);
+        });
     }
 
     private void dispatchTakePictureIntent() {

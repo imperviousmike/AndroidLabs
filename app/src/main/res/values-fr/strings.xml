@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab2</string>
+    <string name="app_name">Lab4</string>
     <string name="enterEmail">Entrez votre adresse email:</string>
     <string name="emailHint">Saisissez votre e-mail ici</string>
     <string name="enterPassword">Tapez votre mot de passe</string>
@@ -10,4 +10,11 @@
     <string name="emailTag">Votre email</string>
     <string name="pictureLabel">Ta photo:</string>
     <string name="pictureText">Cliquez sur le bouton ci-dessus pour prendre une photo</string>
+    <string name="gotoChat">Aller au chat</string>
+    <string name="send">Envoyer</string>
+    <string name="receive">Recevoir</string>
+    <string name="chat_hint">Écrivez ici</string>
+    <string name="deleteEntry">Voulez-vous le supprimer?</string>
+    <string name="row_select_msg">"La ligne sélectionnée est: "</string>
+    <string name="databse_id_msg">"  L'ID de la base de données est:"</string>
 </resources>
