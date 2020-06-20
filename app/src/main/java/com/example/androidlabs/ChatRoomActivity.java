@@ -52,15 +52,12 @@ public class ChatRoomActivity extends AppCompatActivity {
                 new AlertDialog.Builder(ChatRoomActivity.this)
                         .setTitle(getResources().getString(R.string.deleteEntry))
                         .setMessage(getResources().getString(R.string.row_select_msg) + position + "\n" + getResources().getString(R.string.databse_id_msg) + id)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                messageList.remove(position);
-                                myAdapter.notifyDataSetChanged();
-                            }
+                        .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                            messageList.remove(position);
+                            myAdapter.notifyDataSetChanged();
                         })
 
                         .setNegativeButton(android.R.string.no, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
             }
         });
