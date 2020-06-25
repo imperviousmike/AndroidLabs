@@ -1,22 +1,17 @@
 package com.example.androidlabs;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,21 +46,16 @@ public class ChatRoomActivity extends AppCompatActivity {
         });
 
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener((parent, view, position, id) -> new AlertDialog.Builder(ChatRoomActivity.this)
+                .setTitle(getResources().getString(R.string.deleteEntry))
+                .setMessage(getResources().getString(R.string.row_select_msg) + position + "\n" + getResources().getString(R.string.databse_id_msg) + id)
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    messageDB.deleteMessage(messageList.get(position));
+                    updateView();
+                })
 
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                new AlertDialog.Builder(ChatRoomActivity.this)
-                        .setTitle(getResources().getString(R.string.deleteEntry))
-                        .setMessage(getResources().getString(R.string.row_select_msg) + position + "\n" + getResources().getString(R.string.databse_id_msg) + id)
-                        .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                            messageDB.deleteMessage(messageList.get(position));
-                            updateView();
-                        })
-
-                        .setNegativeButton(android.R.string.no, null)
-                        .show();
-            }
-        });
+                .setNegativeButton(android.R.string.no, null)
+                .show());
 
 
     }
