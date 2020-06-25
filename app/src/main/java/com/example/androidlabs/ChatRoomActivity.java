@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +25,15 @@ public class ChatRoomActivity extends AppCompatActivity {
 
     private List<Message> messageList = new ArrayList<>();
     private MyListAdapter myAdapter;
+    private MessageDB messageDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
+        messageDB = new MessageDB(this);
+        messageDB.getWritableDatabase();
+        messageList = messageDB.getAll();
         ListView list = findViewById(R.id.chatList);
         list.setAdapter(myAdapter = new MyListAdapter());
         Button send = findViewById(R.id.sendButton);
@@ -36,13 +41,13 @@ public class ChatRoomActivity extends AppCompatActivity {
         EditText text = findViewById(R.id.chatText);
 
         send.setOnClickListener(v -> {
-            messageList.add(new Message(text.getText().toString(), MessageType.SEND));
-            myAdapter.notifyDataSetChanged();
+            messageDB.addMessage(new Message(text.getText().toString(), MessageType.SEND));
+            updateView();
         });
 
         receive.setOnClickListener(v -> {
-            messageList.add(new Message(text.getText().toString(), MessageType.RECIEVE));
-            myAdapter.notifyDataSetChanged();
+            messageDB.addMessage(new Message(text.getText().toString(), MessageType.RECIEVE));
+            updateView();
         });
 
 
@@ -53,8 +58,8 @@ public class ChatRoomActivity extends AppCompatActivity {
                         .setTitle(getResources().getString(R.string.deleteEntry))
                         .setMessage(getResources().getString(R.string.row_select_msg) + position + "\n" + getResources().getString(R.string.databse_id_msg) + id)
                         .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                            messageList.remove(position);
-                            myAdapter.notifyDataSetChanged();
+                            messageDB.deleteMessage(messageList.get(position));
+                            updateView();
                         })
 
                         .setNegativeButton(android.R.string.no, null)
@@ -63,6 +68,11 @@ public class ChatRoomActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void updateView() {
+        messageList = messageDB.getAll();
+        myAdapter.notifyDataSetChanged();
     }
 
     private class MyListAdapter extends BaseAdapter {
@@ -76,7 +86,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         }
 
         public long getItemId(int position) {
-            return (long) position;
+            return messageList.get(position).getId();
         }
 
         public View getView(int position, View old, ViewGroup parent) {
