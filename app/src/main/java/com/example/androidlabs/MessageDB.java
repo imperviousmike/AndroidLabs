@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MessageDB extends SQLiteOpenHelper {
@@ -72,7 +73,6 @@ public class MessageDB extends SQLiteOpenHelper {
         Cursor c = db.query(TABLE_NAME, columns, null, null, null, null, null);
         c.moveToFirst();
         while (!c.isAfterLast()) {
-            printCursor(c, VERSION_NUM);
             if (c.getString(2) != null) {
                 msgType = MessageType.SEND;
             } else if (c.getString(3) != null) {
@@ -81,6 +81,7 @@ public class MessageDB extends SQLiteOpenHelper {
             msgList.add(new Message(c.getInt(0), c.getString(1), msgType));
             c.moveToNext();
         }
+        printCursor(c, VERSION_NUM);
         return msgList;
     }
 
@@ -99,8 +100,8 @@ public class MessageDB extends SQLiteOpenHelper {
         Log.i("printCursor", "DB version number: " + version
                 + "\nNumber of columns: "
                 + c.getColumnCount()
-                + "\nColumn Names: " + c.getColumnNames()
-                + "\nNumber of rows: " + c.getColumnCount());
+                + "\nColumn Names: " + Arrays.toString(c.getColumnNames())
+                + "\nNumber of rows: " + c.getCount());
     }
 
 }
