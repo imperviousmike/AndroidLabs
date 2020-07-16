@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab 5</string>
+    <string name="app_name">Lab 6</string>
     <string name="enterEmail">Entrez votre adresse email:</string>
     <string name="emailHint">Saisissez votre e-mail ici</string>
     <string name="enterPassword">Tapez votre mot de passe</string>
@@ -17,4 +17,5 @@
     <string name="deleteEntry">Voulez-vous le supprimer?</string>
     <string name="row_select_msg">"La ligne sélectionnée est: "</string>
     <string name="databse_id_msg">"  L'ID de la base de données est:"</string>
+    <string name="gotoWeather">Prévisions météorologiques</string>
 </resources>

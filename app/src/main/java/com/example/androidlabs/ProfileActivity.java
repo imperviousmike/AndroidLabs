@@ -21,7 +21,6 @@ public class ProfileActivity extends AppCompatActivity {
     private static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +35,18 @@ public class ProfileActivity extends AppCompatActivity {
         mImageButton.setOnClickListener(click -> dispatchTakePictureIntent());
 
         Button chatButton = findViewById(R.id.chatButton);
+        Button weatherButton = findViewById(R.id.weatherButton);
 
         chatButton.setOnClickListener(click ->
         {
             Intent goToChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
             startActivity(goToChat);
+        });
+
+        weatherButton.setOnClickListener(click ->
+        {
+            Intent goToWeather = new Intent(ProfileActivity.this, WeatherForecast.class);
+            startActivity(goToWeather);
         });
     }
 
@@ -64,7 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-    super.onPause();
+        super.onPause();
         Log.e(ACTIVITY_NAME, "In function:" + "onPause");
     }
 
