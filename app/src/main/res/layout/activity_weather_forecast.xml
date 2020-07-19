@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     android:columnCount="1"
     android:rowCount="10"
-
+    android:layout_marginTop="27dp"
+    android:layout_marginBottom="27dp"
+    android:layout_marginLeft="48dp"
+    android:layout_marginRight="48dp"
     tools:context=".WeatherForecast">
 
     <ImageView

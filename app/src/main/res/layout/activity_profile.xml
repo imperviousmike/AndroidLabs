@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     android:columnCount="1"
     android:rowCount="10"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layout_marginTop="27dp"
+    android:layout_marginBottom="27dp"
+    android:layout_marginLeft="48dp"
+    android:layout_marginRight="48dp">
 
     <TextView
         android:id="@+id/profileText"
@@ -32,7 +36,12 @@
         android:layout_column="0"
         android:ems="10"
         android:hint="@string/nameHint"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:nextFocusDown="@id/emailInput"
+        android:nextFocusUp="@id/weatherButton"
+        android:nextFocusRight="@id/emailInput"
+        android:nextFocusLeft="@id/weatherButton"
+        />
 
     <TextView
         android:id="@+id/emailText"
@@ -50,7 +59,12 @@
         android:layout_column="0"
         android:ems="10"
         android:hint="@string/emailHint"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:nextFocusDown="@id/imageUpload"
+        android:nextFocusUp="@id/nameInput"
+        android:nextFocusRight="@id/imageUpload"
+        android:nextFocusLeft="@id/nameInput"
+        />
 
     <TextView
         android:id="@+id/pictureText"
@@ -66,7 +80,12 @@
         android:layout_height="wrap_content"
         android:layout_row="6"
         android:layout_column="0"
-        app:srcCompat="@android:drawable/picture_frame" />
+        app:srcCompat="@android:drawable/picture_frame"
+        android:nextFocusDown="@id/chatButton"
+        android:nextFocusUp="@id/emailInput"
+        android:nextFocusRight="@id/chatButton"
+        android:nextFocusLeft="@id/emailInput"
+        />
 
     <TextView
         android:id="@+id/imageInfo"
@@ -82,13 +101,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_row="8"
-        android:layout_column="0"/>
+        android:layout_column="0"
+        android:nextFocusDown="@id/weatherButton"
+        android:nextFocusUp="@id/imageUpload"
+        android:nextFocusRight="@id/weatherButton"
+        android:nextFocusLeft="@id/imageUpload"
+        />
     <Button
         android:id="@+id/weatherButton"
         android:text="@string/gotoWeather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_row="9"
-        android:layout_column="0"/>
+        android:layout_column="0"
+        android:nextFocusDown="@id/nameInput"
+        android:nextFocusUp="@id/chatButton"
+        android:nextFocusRight="@id/nameInput"
+        android:nextFocusLeft="@id/chatButton"
+        />
 
 </GridLayout>
