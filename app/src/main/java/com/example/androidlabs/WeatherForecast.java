@@ -52,7 +52,7 @@ public class WeatherForecast extends AppCompatActivity {
         weather = findViewById(R.id.currentWeather);
 
         ForecastQuery req = new ForecastQuery();
-        req.execute("http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=7e943c97096a9784391a981c4d878b22&mode=xml&units=metric");
+        req.execute("https://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=7e943c97096a9784391a981c4d878b22&mode=xml&units=metric");
     }
 
     class ForecastQuery extends AsyncTask<String, Integer, String> {
@@ -96,7 +96,7 @@ public class WeatherForecast extends AppCompatActivity {
                     eventType = xpp.next(); //move to the next xml event and store it in a variable
                 }
 
-                url = new URL("http://api.openweathermap.org/data/2.5/uvi?appid=7e943c97096a9784391a981c4d878b22&lat=45.348945&lon=-75.759389");
+                url = new URL("https://api.openweathermap.org/data/2.5/uvi?appid=7e943c97096a9784391a981c4d878b22&lat=45.348945&lon=-75.759389");
 
                 //open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -124,7 +124,7 @@ public class WeatherForecast extends AppCompatActivity {
                 publishProgress(100);
 
                 Log.i("WeatherForecast", "Getting" + iconName + ".png");
-                url = new URL("http://openweathermap.org/img/w/" + iconName + ".png");
+                url = new URL("https://openweathermap.org/img/w/" + iconName + ".png");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.connect();
                 int responseCode = urlConnection.getResponseCode();
@@ -150,6 +150,7 @@ public class WeatherForecast extends AppCompatActivity {
 
 
             } catch (Exception e) {
+                Log.i("Exception",e.toString());
 
             }
 

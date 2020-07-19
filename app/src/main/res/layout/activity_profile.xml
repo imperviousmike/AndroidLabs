@@ -64,7 +64,7 @@
         android:id="@+id/imageUpload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_row="6"
+        android:layout_row="9"
         android:layout_column="0"
         app:srcCompat="@android:drawable/picture_frame" />
 
@@ -88,7 +88,7 @@
         android:text="@string/gotoWeather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_row="9"
+        android:layout_row="6"
         android:layout_column="0"/>
 
 </GridLayout>
