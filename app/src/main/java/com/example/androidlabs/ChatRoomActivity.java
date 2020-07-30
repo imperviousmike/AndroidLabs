@@ -3,20 +3,17 @@ package com.example.androidlabs;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +23,14 @@ public class ChatRoomActivity extends AppCompatActivity {
     private List<Message> messageList = new ArrayList<>();
     private MyListAdapter myAdapter;
     private MessageDB messageDB;
+    private DetailsFragment dFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
+        boolean isTablet = findViewById(R.id.frame) != null;
+        ;
         messageDB = new MessageDB(this);
         messageDB.getWritableDatabase();
         messageList = messageDB.getAll();
@@ -54,21 +54,44 @@ public class ChatRoomActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle dataToPass = new Bundle();
+                dataToPass.putString("Message", messageList.get(position).getMessage());
+                dataToPass.putLong("Id", id);
+                dataToPass.putString("SendReceive", messageList.get(position).getType().toString());
+                if (isTablet) {
+                    dFragment = new DetailsFragment(); //add a DetailFragment
+                    dFragment.setArguments(dataToPass); //pass it a bundle for information
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.frame, dFragment) //Add the fragment in FrameLayout
+                            .commit(); //actually load the fragment. Calls onCreate() in DetailFragment
+                } else //isPhone
+                {
+                    Intent nextActivity = new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                    nextActivity.putExtras(dataToPass); //send data to next activity
+                    startActivity(nextActivity); //make the transition
+                }
+            }
+        });
+
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 new AlertDialog.Builder(ChatRoomActivity.this)
                         .setTitle(getResources().getString(R.string.deleteEntry))
                         .setMessage(getResources().getString(R.string.row_select_msg) + position + "\n" + getResources().getString(R.string.databse_id_msg) + id)
                         .setPositiveButton(android.R.string.yes, (dialog, which) -> {
                             messageDB.deleteMessage(messageList.get(position));
                             updateView();
+                            getSupportFragmentManager().beginTransaction().remove(dFragment).commit();
                         })
-
                         .setNegativeButton(android.R.string.no, null)
                         .show();
+                return true;
             }
         });
 
 
-    }
+        }
 
     private void updateView() {
         messageList = messageDB.getAll();
