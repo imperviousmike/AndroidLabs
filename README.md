@@ -2,6 +2,6 @@
 
 CST2335 
 
-Lab 01
+Switch branches to see different labs.
 
 
